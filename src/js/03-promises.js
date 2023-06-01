@@ -26,6 +26,7 @@ function createPromises(event) {
   const step = Number(form.elements.step.value);
   const amount = Number(form.elements.amount.value);
 
+
   for (let i = 1; i <= amount; i += 1) {
     createPromise(i, delay)
       .then(({ position, delay }) => {
@@ -36,4 +37,6 @@ function createPromises(event) {
       });
     delay += step;
   }
+  event.currentTarget.reset();
 }
+form.addEventListener('submit', createPromises);
