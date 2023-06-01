@@ -1,5 +1,7 @@
+
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix';
 
 const refs = {
     timer: document.querySelector('.timer'),
@@ -38,7 +40,7 @@ const refs = {
       if (selectedDates[0] > Date.now()) {
         refs.startButton.removeAttribute('disabled');
       } else {
-        alert('Вибрати дату в майбутньому часі');
+        Notify.failure('Вибрати дату в майбутньому часі');
       }
     },
   });
@@ -56,7 +58,7 @@ const refs = {
         clearInterval(timer);
         refs.timePicker.removeAttribute('disabled');
         refs.seconds.classList.remove('zero');
-        alert('Час вийшов');
+        Notify.success('Час вийшов');
       }
     }, 800);
   }
