@@ -3,7 +3,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 const refs = {
     timer: document.querySelector('.timer'),
-    startBtn: document.querySelector('[data-start]'),
+    startButton: document.querySelector('[data-start]'),
     timePicker: document.querySelector('#datetime-picker'),
     days: document.querySelector('[data-days]'),
     hours: document.querySelector('[data-hours]'),
@@ -26,8 +26,8 @@ const refs = {
     return { days, hours, minutes, seconds };
   }
   
-  refs.startBtn.setAttribute('disabled', true);
-  refs.startBtn.addEventListener('click', onClick);
+  refs.startButton.setAttribute('disabled', true);
+  refs.startButton.addEventListener('click', onClick);
   
   const setFlatpickr = flatpickr(refs.timePicker, {
     enableTime: true,
@@ -36,7 +36,7 @@ const refs = {
     minuteIncrement: 1,
     onClose(selectedDates) {
       if (selectedDates[0] > Date.now()) {
-        refs.startBtn.removeAttribute('disabled');
+        refs.startButton.removeAttribute('disabled');
       } else {
         alert('Вибрати дату в майбутньому часі');
       }
@@ -44,7 +44,7 @@ const refs = {
   });
   
   function onClick() {
-    refs.startBtn.setAttribute('disabled', true);
+    refs.startButton.setAttribute('disabled', true);
   
     const timer = setInterval(() => {
       const selectedDate = setFlatpickr.selectedDates[0].getTime() - Date.now();
