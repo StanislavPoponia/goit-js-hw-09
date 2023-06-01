@@ -38,7 +38,7 @@ const refs = {
       if (selectedDates[0] > Date.now()) {
         refs.startBtn.removeAttribute('disabled');
       } else {
-        window.alert('Please choose a date in the future');
+        alert('Вибрати дату в майбутньому часі');
       }
     },
   });
@@ -56,9 +56,9 @@ const refs = {
         clearInterval(timer);
         refs.timePicker.removeAttribute('disabled');
         refs.seconds.classList.remove('zero');
-        window.alert('Time is up!');
+        alert('Час вийшов');
       }
-    }, 1000);
+    }, 800);
   }
   
   function renderTimer({ days, hours, minutes, seconds }) {
