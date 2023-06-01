@@ -52,18 +52,18 @@ const refs = {
       const selectedDate = setFlatpickr.selectedDates[0].getTime() - Date.now();
   
       if (selectedDate > 0) {
-        renderTimer(convertMs(selectedDate));
-        refs.seconds.classList.add('zero');
+        doTimer(convertMs(selectedDate));
+        refs.seconds.classList.add('time-js');
       } else {
         clearInterval(timer);
         refs.timePicker.removeAttribute('disabled');
-        refs.seconds.classList.remove('zero');
+        refs.seconds.classList.remove('time-js');
         Notify.success('Час вийшов');
       }
     }, 800);
   }
   
-  function renderTimer({ days, hours, minutes, seconds }) {
+  function doTimer({ days, hours, minutes, seconds }) {
     refs.days.textContent = addLeadingZero(days);
     refs.hours.textContent = addLeadingZero(hours);
     refs.minutes.textContent = addLeadingZero(minutes);
